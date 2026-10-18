@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS - Personal Intelligence & Growth Network</title>
+  <meta name="description" content="Next-generation developer intelligence platform combining WorkLens contextual AI, ProblemDNA vector memory, Human API expertise, and SkillQuest career growth.">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="brand-title">NEXUS</h1>
+        <div class="brand-sub">See • Solve • Learn • Grow • Remember</div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Pills -->
+    <nav class="nav-pills" role="tablist">
+      <button class="nav-pill active" data-tab="tab-worklens" id="tabBtnWorklens" role="tab">
+        <span>🔍 WorkLens AI</span>
+      </button>
+      <button class="nav-pill" data-tab="tab-problemdna" id="tabBtnProblemDna" role="tab">
+        <span>🧬 ProblemDNA</span>
+      </button>
+      <button class="nav-pill" data-tab="tab-humanapi" id="tabBtnHumanApi" role="tab">
+        <span>👥 Human API</span>
+      </button>
+      <button class="nav-pill" data-tab="tab-skillquest" id="tabBtnSkillQuest" role="tab">
+        <span>📈 SkillQuest</span>
+      </button>
+      <button class="nav-pill" data-tab="tab-twin" id="tabBtnTwin" role="tab">
+        <span>🧠 AI Twin</span>
+      </button>
+      <button class="nav-pill" data-tab="tab-architecture" id="tabBtnArchitecture" role="tab">
+        <span>📐 Architecture</span>
+      </button>
+    </nav>
+
+    <!-- Header Status Indicator -->
+    <div class="status-indicator">
+      <span class="dot-pulse"></span>
+      <span id="backendStatusLabel">Platform Active • Ready</span>
+    </div>
+  </header>
+
+  <!-- Sub-Header Pipeline Progression & Quick Toggles -->
+  <div class="sub-banner">
+    <div class="pipeline-progression">
+      <div class="progression-step active" id="progStep1">1. Problem Encounter</div>
+      <span class="progression-separator">→</span>
+      <div class="progression-step" id="progStep2">2. WorkLens Diagnosis</div>
+      <span class="progression-separator">→</span>
+      <div class="progression-step" id="progStep3">3. Developer Evaluation</div>
+      <span class="progression-separator">→</span>
+      <div class="progression-step" id="progStep4">4. Expert Escalation</div>
+      <span class="progression-separator">→</span>
+      <div class="progression-step" id="progStep5">5. Verification Gate</div>
+      <span class="progression-separator">→</span>
+      <div class="progression-step" id="progStep6">6. SkillQuest Archival</div>
+    </div>
+
+    <div class="mode-pills">
+      <button class="mode-btn active" id="modeBtnInteractive">Interactive IDE</button>
+      <button class="mode-btn" id="modeBtnArchitecture">Blueprint View</button>
+    </div>
+  </div>
+
+  <!-- Main View Container -->
+  <main class="app-container">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: WORKLENS CONTEXTUAL AI ASSISTANT -->
+    <!-- ========================================== -->
+    <section class="view-section active" id="tab-worklens">
+      <!-- Quick Scenario Picker Chips -->
+      <div class="scenario-bar">
+        <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center; font-weight: 600; margin-right: 4px;">PRESET SCENARIOS:</span>
+        <button class="scenario-chip" id="chipReactImport">⚡ Scenario A: React Component Pluralization</button>
+        <button class="scenario-chip" id="chipPostgresLock">🐘 Scenario B: Postgres Stale Lock & Port 5432</button>
+        <button class="scenario-chip" id="chipPydanticVal">🐍 Scenario C: Pydantic Validation Error</button>
+        <button class="scenario-chip" id="chipHydrationMismatch">⚛️ Scenario D: React 18 Hydration Mismatch</button>
+      </div>
+
+      <div class="worklens-layout">
+        <!-- Left Column: Context Intake & Trigger Form -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2 class="panel-heading">
+              <span>⚡</span> User-Triggered Context Intake
+            </h2>
+            <span style="font-size: 0.725rem; color: var(--accent-cyan); font-weight: 600; background: rgba(6,182,212,0.1); padding: 3px 8px; border-radius: 6px;">
+              Privacy-First • Least Privilege
+            </span>
+          </div>
+          <div class="panel-body">
+            <form id="worklensForm">
+              <div class="field-group">
+                <label class="field-label" for="inputQuery">Problem Description / Error Symptom</label>
+                <input type="text" id="inputQuery" class="field-input" placeholder="e.g. Module not found: Can't resolve './ProductCard'" required>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="inputTerminalLog">Last 100 Terminal Logs (Scoped Context)</label>
+                <textarea id="inputTerminalLog" class="field-textarea" rows="5" placeholder="Terminal logs, compiler traces, or stack trace buffer..."></textarea>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="inputCodeSnippet">Active Code Buffer / Selection</label>
+                <textarea id="inputCodeSnippet" class="field-textarea" rows="3" placeholder="// Selected code snippet from active IDE editor..."></textarea>
+              </div>
+
+              <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button type="submit" class="action-btn btn-brand" id="btnRunInvestigation" style="flex: 1;">
+                  <span>🔍 Run WorkLens Investigation</span>
+                </button>
+              </div>
+            </form>
+
+            <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-subtle);">
+              <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px;">🛡️ Zero Continuous Surveillance</div>
+              <p style="font-size: 0.73rem; color: var(--text-muted); line-height: 1.4;">
+                Context is scoped strictly to bounded terminal log history and folder map upon manual developer invocation. No keystroke logging or background recording.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: AI Diagnostic Output, Diff, and Actions -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2 class="panel-heading">
+              <span>🤖</span> Diagnostic Synthesis & Suggested Fix
+            </h2>
+            <div id="confidencePill" style="display: none;" class="status-indicator">
+              Confidence: 96%
+            </div>
+          </div>
+          <div class="panel-body">
+            <!-- Empty state -->
+            <div id="investigationEmptyState" style="text-align: center; padding: 48px 20px; color: var(--text-muted);">
+              <div style="font-size: 3rem; margin-bottom: 12px; opacity: 0.7;">🔭</div>
+              <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 6px;">Ready for Investigation</h3>
+              <p style="font-size: 0.825rem; max-width: 420px; margin: 0 auto;">
+                Select a preset scenario above or enter an error log to observe the LangGraph agent toolchain and verified code diff.
+              </p>
+            </div>
+
+            <!-- Results container -->
+            <div id="investigationResultsArea" style="display: none;">
+              <!-- Tool Execution Sequence -->
+              <div style="margin-bottom: 18px;">
+                <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                  LangGraph Agent Orchestration Sequence:
+                </div>
+                <div id="toolExecutionTimeline"></div>
+              </div>
+
+              <!-- Root Cause Analysis -->
+              <div style="margin-bottom: 16px;">
+                <div class="field-label">Identified Root Cause:</div>
+                <div id="rootCauseDisplay" style="font-size: 0.88rem; color: var(--text-primary); background: rgba(10, 14, 23, 0.7); padding: 12px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); line-height: 1.5;">
+                </div>
+              </div>
+
+              <!-- Unified Diff Viewer -->
+              <div style="margin-bottom: 16px;">
+                <div class="field-label">Suggested Code Patch (Unified Diff):</div>
+                <div class="diff-box" id="suggestedDiffDisplay"></div>
+              </div>
+
+              <!-- Recommended Verification Protocol -->
+              <div style="margin-bottom: 20px;">
+                <div class="field-label">Recommended Verification Protocol:</div>
+                <ol id="verificationStepsList" style="padding-left: 20px; font-size: 0.825rem; color: var(--text-secondary); line-height: 1.6;"></ol>
+              </div>
+
+              <!-- Stage 3: Developer Evaluation Buttons -->
+              <div style="padding-top: 16px; border-top: 1px solid var(--border-subtle); display: flex; gap: 12px;">
+                <button class="action-btn btn-success" id="btnSatisfiedProceed" style="flex: 1;">
+                  <span>✓ Satisfied: Apply & Verify Fix</span>
+                </button>
+                <button class="action-btn btn-danger" id="btnNotSatisfiedEscalate" style="flex: 1;">
+                  <span>✕ Not Satisfied: Escalate to Expert</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 5: Live Verification Gate Section -->
+      <div id="verificationGateSection" class="panel" style="display: none; margin-top: 24px; border-color: rgba(16, 185, 129, 0.4);">
+        <div class="panel-header" style="background: rgba(16, 185, 129, 0.06);">
+          <h3 class="panel-heading" style="color: var(--accent-emerald);">
+            <span>🛡️</span> Stage 5: Solution Verification & ProblemDNA Archival Gate
+          </h3>
+          <span style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">Strict Evidence Rule Enforced</span>
+        </div>
+        <div class="panel-body">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+              <div class="field-group">
+                <label class="field-label">Verification Command / Automated Test Runner</label>
+                <input type="text" id="verifyCommandInput" class="field-input" value="npm test -- -u">
+              </div>
+              <button class="action-btn btn-muted" id="btnRunVerificationCommand">
+                <span>⚙️ Execute Test Gate</span>
+              </button>
+              <div id="verifyExecutionResult" style="margin-top: 10px; font-family: var(--font-mono); font-size: 0.78rem; color: #a7f3d0;"></div>
+            </div>
+            <div>
+              <div class="field-group">
+                <label class="field-label">Verification Evidence (Proof)</label>
+                <textarea id="verifyEvidenceInput" class="field-textarea" rows="3">Test Suites: 1 passed, 1 total. Component resolved cleanly without module resolution errors.</textarea>
+              </div>
+              <button class="action-btn btn-brand" id="btnCommitToProblemDNA" style="background: var(--accent-emerald); color: #042f24; font-weight: 700; width: 100%;">
+                <span>🧬 Commit & Index into ProblemDNA Vector Memory</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: PROBLEMDNA VECTOR KNOWLEDGE BASE -->
+    <!-- ========================================== -->
+    <section class="view-section" id="tab-problemdna">
+      <div class="panel">
+        <div class="panel-header">
+          <h2 class="panel-heading"><span>🧬</span> ProblemDNA: Reusable Vector Memory & Incident Store</h2>
+          <div style="display: flex; gap: 10px; width: 360px;">
+            <input type="text" id="dnaSearchInput" class="field-input" placeholder="Semantic vector search across incidents...">
+            <button class="action-btn btn-brand" id="btnDnaSearch" style="padding: 6px 14px; font-size: 0.8rem;">Search</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">
+            ProblemDNA permanently preserves verified engineering postmortems. Vector embeddings ground future WorkLens sessions with empirical organizational truth.
+          </div>
+          <div id="problemDnaRecordsList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: HUMAN API & VISUAL EXPERT -->
+    <!-- ========================================== -->
+    <section class="view-section" id="tab-humanapi">
+      <div class="panel" style="margin-bottom: 24px;">
+        <div class="panel-header">
+          <h2 class="panel-heading"><span>👥</span> Human API: Evidence-Based Engineering Expert Network</h2>
+          <div class="status-indicator" style="background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.3); color: var(--text-accent);">
+            Gitea & ProblemDNA Grounded
+          </div>
+        </div>
+        <div class="panel-body">
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">
+            Experts are matched on proven Gitea commits and verified ProblemDNA solutions, not self-reported resumes. When unavailable, the <strong>Visual Expert</strong> AI fallback activates.
+          </div>
+          <div id="expertProfilesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Active Escalation Session View -->
+      <div id="activeEscalationArea" class="panel" style="display: none; border-color: var(--accent-purple);">
+        <div class="panel-header" style="background: rgba(168, 85, 247, 0.08);">
+          <h3 class="panel-heading" style="color: var(--accent-purple);" id="escalationHeaderTitle">
+            <span>📡</span> Active Escalation Session
+          </h3>
+        </div>
+        <div class="panel-body" id="escalationBodyContent"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: SKILLQUEST PERSONAL GROWTH LAYER -->
+    <!-- ========================================== -->
+    <section class="view-section" id="tab-skillquest">
+      <div class="panel" style="margin-bottom: 24px;">
+        <div class="panel-header">
+          <h2 class="panel-heading"><span>📈</span> SkillQuest: Evidence-Based Personal Growth & Mastery</h2>
+          <span style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">Non-Surveillance Analytics</span>
+        </div>
+        <div class="panel-body">
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;">
+            Synthesizes terminal logs, verified ProblemDNA solutions, and Gitea contributions into four developmental quadrants. Replaces toxic vanity metrics with actionable growth.
+          </div>
+
+          <!-- Four Skill Quadrants -->
+          <div class="quadrants-container">
+            <div class="quadrant-box strong">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-weight: 700; color: var(--accent-emerald); font-size: 0.95rem;">🌟 Strong Areas</span>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">High Autonomy</span>
+              </div>
+              <div id="quadrantStrongList"></div>
+            </div>
+
+            <div class="quadrant-box good">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-weight: 700; color: var(--accent-cyan); font-size: 0.95rem;">⚡ Good Areas</span>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Consistent Competency</span>
+              </div>
+              <div id="quadrantGoodList"></div>
+            </div>
+
+            <div class="quadrant-box focus">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-weight: 700; color: var(--accent-amber); font-size: 0.95rem;">🎯 Focus Areas</span>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Recurring Assistance</span>
+              </div>
+              <div id="quadrantFocusList"></div>
+            </div>
+
+            <div class="quadrant-box practice">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-weight: 700; color: var(--accent-rose); font-size: 0.95rem;">🌱 Needs Practice</span>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Emerging APIs</span>
+              </div>
+              <div id="quadrantPracticeList"></div>
+            </div>
+          </div>
+
+          <!-- Actionable Growth Recommendations -->
+          <div>
+            <h3 style="font-size: 1.05rem; margin-bottom: 14px; color: var(--text-accent);">🚀 Targeted Growth Opportunities</h3>
+            <div id="recommendationsList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: PERSONAL AI TWIN & KNOWLEDGE VAULT -->
+    <!-- ========================================== -->
+    <section class="view-section" id="tab-twin">
+      <div class="panel">
+        <div class="panel-header">
+          <h2 class="panel-heading"><span>🧠</span> Personal AI Twin: Longitudinal Engineering Intelligence</h2>
+          <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">Private Indexed Vault</span>
+        </div>
+        <div class="panel-body">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div>
+              <div class="field-label">Identified Problem-Solving Cognitive Style:</div>
+              <div class="nexus-card" style="border-left: 3px solid var(--accent-cyan);" id="twinStyleDisplay">
+                Loading AI Twin profile...
+              </div>
+
+              <div class="field-label" style="margin-top: 18px;">Preferred Engineering Tools & Runtimes:</div>
+              <div id="twinToolsList"></div>
+            </div>
+
+            <div>
+              <div class="field-label">Personal Knowledge Vault (Encrypted Artifacts):</div>
+              <div id="twinVaultList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: ARCHITECTURE BLUEPRINT & PROCESS FLOW -->
+    <!-- ========================================== -->
+    <section class="view-section" id="tab-architecture">
+      <div class="panel" style="margin-bottom: 24px;">
+        <div class="panel-header">
+          <h2 class="panel-heading"><span>📐</span> System Blueprint & Architecture Map</h2>
+          <span style="font-size: 0.75rem; color: var(--text-accent); font-weight: 600;">Figure 1 & Figure 2 Specification</span>
+        </div>
+        <div class="panel-body">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div class="nexus-card">
+              <h3 style="font-size: 1rem; color: var(--accent-cyan); margin-bottom: 8px;">Architecture Blueprint (Figure 1)</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Maps structural modules, services, data stores, and communication channels: Client Interfaces → WorkLens Agent (Search, Read, Context, Execute) → ProblemDNA Vector DB → Human API & Visual Expert → SkillQuest → AI Twin.
+              </p>
+              <img src="/static_img_arch" onerror="this.src='IMG-20261012-WA0001.jpg'" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);" alt="Architecture Blueprint">
+            </div>
+
+            <div class="nexus-card">
+              <h3 style="font-size: 1rem; color: var(--accent-emerald); margin-bottom: 8px;">End-to-End Process Flow (Figure 2)</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Chronological sequence from developer's first error: Stage 1 Trigger → Stage 2 WorkLens Investigation → Stage 3 Developer Evaluation → Stage 4 Expert Escalation → Stage 5 Verification Gate → Stage 6 SkillQuest Archival.
+              </p>
+              <img src="/static_img_flow" onerror="this.src='IMG-20261012-WA0000.jpg'" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);" alt="Process Flow Diagram">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    <div><strong>NEXUS Platform</strong> — Personal Intelligence & Growth Network</div>
+    <div style="margin-top: 4px; font-size: 0.72rem; color: var(--text-muted);">
+      "See. Solve. Learn. Grow. Remember." • Privacy-First & Developer-Centric
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | NEXUS</title>
+  <meta name="description" content="NEXUS - Personal Intelligence & Growth Network Prototype Sign-In">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #080b11;
+      --bg-surface: #0e1422;
+      --bg-card: rgba(17, 24, 39, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(99, 102, 241, 0.5);
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-accent: #818cf8;
+
+      --accent-primary: #6366f1;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+
+      --gradient-brand: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-image: 
+        radial-gradient(ellipse 70% 60% at 20% 10%, rgba(99, 102, 241, 0.12), transparent),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(6, 182, 212, 0.09), transparent);
+    }
+
+    .auth-wrapper {
+      max-width: 1080px;
+      width: 100%;
+      min-height: 640px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      overflow: hidden;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 860px) {
+      .auth-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .brand-side {
+        display: none;
+      }
+    }
+
+    /* Left Brand Showcase Panel */
+    .brand-side {
+      background: linear-gradient(180deg, rgba(14, 20, 34, 0.95), rgba(8, 11, 17, 0.98)),
+                  radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.25), transparent 45%);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 24px;
+    }
+
+    .brand-logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--gradient-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .brand-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-headline {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .brand-description {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .feature-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    .brand-footer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
+    }
+
+    /* Right Sign-in Form Panel */
+    .form-side {
+      background: rgba(14, 19, 31, 0.7);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .form-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .input-box {
+      width: 100%;
+      background: rgba(8, 11, 17, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .input-box:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .eye-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .form-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      font-size: 0.825rem;
+    }
+
+    .form-links a {
+      color: var(--text-accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .form-links a:hover {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--gradient-brand);
+      color: white;
+      font-family: var(--font-sans);
+      font-size: 0.925rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Demo Quick Sign-in Section (Frontend Only) */
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 24px 0 16px;
+      color: var(--text-muted);
+      font-size: 0.725rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    .divider span {
+      padding: 0 12px;
+    }
+
+    .demo-role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .btn-role {
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-role:hover {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: var(--text-primary);
+    }
+
+    .state-toggle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn-state {
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--border-subtle);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.725rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-state:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .disclaimer-box {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .disclaimer-box svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--accent-amber);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Notification Toast */
+    .toast-msg {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(16, 185, 129, 0.95);
+      color: #042f24;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <!-- Left Showcase Side -->
+    <div class="brand-side">
+      <div>
+        <div class="brand-badge">NEXUS PROTOTYPE</div>
+        <div class="brand-logo-lockup">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="brand-name">NEXUS</span>
+        </div>
+        <h2 class="brand-headline">See. Solve. Learn. Grow. Remember.</h2>
+        <p class="brand-description">
+          A polished frontend-only prototype for personal intelligence, continuous learning growth, and problem-specific engineering expert discovery.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span>WorkLens Contextual AI Assistant (Terminal logs & folder map)</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span>ProblemDNA Reusable Vector Memory & Semantic RAG</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span>Human API & Visual Expert Fallback Archetype</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-dot"></span>
+            <span>SkillQuest 4-Quadrant Non-Surveillance Growth Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-footer">
+        No backend · No real authentication · Sample frontend state only
+      </div>
+    </div>
+
+    <!-- Right Login Form Side -->
+    <div class="form-side">
+      <div id="toastMessage" class="toast-msg">Redirecting to NEXUS Portal...</div>
+
+      <div class="top-actions">
+        <a href="/" style="font-size: 0.78rem; color: var(--text-accent); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 4px;">
+          ← Back to Portal
+        </a>
+        <button class="theme-toggle" id="themeToggleBtn" title="Toggle Theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <h2 class="form-title">Sign in</h2>
+      <p class="form-sub">Use the sample form state or select a clearly labelled demo role.</p>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <label class="input-label" for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" class="input-box" value="you@nexus.dev" placeholder="you@nexus.dev" required>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="loginPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="loginPassword" class="input-box" value="DemoPassword123" placeholder="Demo password" required>
+            <button type="button" class="eye-toggle" id="togglePasswordBtn">👁</button>
+          </div>
+        </div>
+
+        <div class="form-links">
+          <a href="#" id="linkForgotPassword">Forgot password?</a>
+          <a href="#" id="linkSignup">Create employee account</a>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSignInSubmit">
+          Sign in (simulated)
+        </button>
+      </form>
+
+      <!-- Demo Quick Role Sign-in (Frontend State Only) -->
+      <div class="divider">
+        <span>Prototype Demo Sign-In (no auth required)</span>
+      </div>
+
+      <div class="demo-role-grid">
+        <button type="button" class="btn-role" id="btnDemoDeveloper">
+          💻 Developer
+        </button>
+        <button type="button" class="btn-role" id="btnDemoAdmin">
+          🛡️ Admin
+        </button>
+        <button type="button" class="btn-role" id="btnDemoSuperAdmin">
+          👑 Super Admin
+        </button>
+      </div>
+
+      <div class="state-toggle-grid">
+        <button type="button" class="btn-state" id="btnStateFirstLogin">
+          ✨ First-login state
+        </button>
+        <button type="button" class="btn-state" id="btnStateUnavailable">
+          ⏸️ Unavailable state
+        </button>
+      </div>
+
+      <div class="disclaimer-box">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        </svg>
+        <span>Admin accounts are provisioned by an authorized Super Admin. Public sign-up never creates privileged accounts.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Frontend-only Simulated Authentication Logic
+    const form = document.getElementById("loginForm");
+    const emailInput = document.getElementById("loginEmail");
+    const passwordInput = document.getElementById("loginPassword");
+    const toggleEye = document.getElementById("togglePasswordBtn");
+    const toast = document.getElementById("toastMessage");
+
+    // Show/Hide password toggle
+    toggleEye.addEventListener("click", () => {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleEye.textContent = "🔒";
+      } else {
+        passwordInput.type = "password";
+        toggleEye.textContent = "👁";
+      }
+    });
+
+    function simulateLoginSuccess(role, state = "standard") {
+      localStorage.setItem("nexus_user_role", role);
+      localStorage.setItem("nexus_user_email", emailInput.value);
+      localStorage.setItem("nexus_ui_state", state);
+
+      toast.style.display = "block";
+      toast.textContent = `Signed in as ${role} (${state} state) → Opening NEXUS Portal...`;
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 700);
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      simulateLoginSuccess("Developer", "standard");
+    });
+
+    // Quick demo role buttons
+    document.getElementById("btnDemoDeveloper").addEventListener("click", () => {
+      emailInput.value = "developer@nexus.dev";
+      simulateLoginSuccess("Developer demo");
+    });
+
+    document.getElementById("btnDemoAdmin").addEventListener("click", () => {
+      emailInput.value = "admin@nexus.dev";
+      simulateLoginSuccess("Admin demo");
+    });
+
+    document.getElementById("btnDemoSuperAdmin").addEventListener("click", () => {
+      emailInput.value = "superadmin@nexus.dev";
+      simulateLoginSuccess("Super Admin demo");
+    });
+
+    // Simulated states
+    document.getElementById("btnStateFirstLogin").addEventListener("click", () => {
+      emailInput.value = "newhire@nexus.dev";
+      simulateLoginSuccess("New Developer", "first-login");
+    });
+
+    document.getElementById("btnStateUnavailable").addEventListener("click", () => {
+      emailInput.value = "oncall@nexus.dev";
+      simulateLoginSuccess("On-Call Developer", "unavailable");
+    });
+
+    document.getElementById("linkForgotPassword").addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Prototype Notice: Password reset flow is simulated. You can use any demo password or click one of the demo role buttons below!");
+    });
+
+    document.getElementById("linkSignup").addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Prototype Notice: Self-service employee signup is simulated. Use 'Developer demo' or 'First-login state' to explore the onboarding experience.");
+    });
+  </script>
+</body>
+</html>

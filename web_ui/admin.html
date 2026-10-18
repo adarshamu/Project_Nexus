@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | NEXUS</title>
+  <meta name="description" content="NEXUS Cohort Administration & Roster Management">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="workspace.css">
+</head>
+<body>
+  <!-- Global Top Header -->
+  <header class="app-header">
+    <a href="/admin" class="brand-wrapper">
+      <div class="brand-icon" style="background: linear-gradient(135deg, #06b6d4, #10b981);">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="brand-title">NEXUS</h1>
+        <div class="brand-sub">Admin Portal</div>
+      </div>
+    </a>
+
+    <!-- Workspace Switcher Pills -->
+    <div class="workspace-switcher">
+      <a href="/dashboard" class="ws-btn">💻 Developer</a>
+      <a href="/admin" class="ws-btn active">🛡️ Admin</a>
+      <a href="/super-admin" class="ws-btn">👑 Super Admin</a>
+      <a href="/" class="ws-btn">⚡ WorkLens Engine</a>
+    </div>
+
+    <!-- Active User Profile Badge -->
+    <div class="user-badge">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Admin A-1" class="user-avatar">
+      <div class="user-info">
+        <span class="user-name">Admin A-1</span>
+        <span class="user-role-label">Cohort Administrator</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Workspace Main Layout -->
+  <div class="workspace-container">
+    <!-- Left Navigation Sidebar -->
+    <aside class="app-sidebar">
+      <nav class="sidebar-nav">
+        <span class="sidebar-heading">Cohort Admin</span>
+        <a href="/admin" class="sidebar-link active">📊 Overview</a>
+        <a href="/admin/batches" class="sidebar-link">📦 Batches (3)</a>
+        <a href="/admin/batches/b-101/employees" class="sidebar-link">👥 Employee Rosters</a>
+        <a href="/admin/courses" class="sidebar-link">📚 Assigned Courses</a>
+        <a href="/admin/recommendations" class="sidebar-link">🎯 Recommendations</a>
+        <a href="/admin/insights" class="sidebar-link">🔍 Skill Gaps Heatmap</a>
+        <a href="/admin/leaderboard" class="sidebar-link">🏆 Leaderboard</a>
+
+        <span class="sidebar-heading" style="margin-top: 14px;">Data & System</span>
+        <a href="/admin/import" class="sidebar-link">📥 Bulk CSV Import</a>
+        <a href="/admin/audit-log" class="sidebar-link">📋 Audit Log</a>
+        <a href="/admin/settings" class="sidebar-link">⚙️ Cohort Settings</a>
+      </nav>
+
+      <div style="font-size: 0.72rem; color: var(--text-muted); padding: 12px; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm);">
+        Active Batches: <strong>3 cohorts</strong><br>
+        Enrolled Engineers: <strong>46 total</strong>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Content -->
+    <main class="workspace-main">
+      <!-- Welcome Header -->
+      <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 4px;">Cohort Management Dashboard</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Real-time monitoring across employee batches, completion velocity, and skill gap interventions.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a href="/admin/import" class="nexus-btn nexus-btn-muted">📥 Import Employees</a>
+          <a href="/admin/employees/new" class="nexus-btn nexus-btn-primary">+ Provision Employee</a>
+        </div>
+      </div>
+
+      <!-- Top Metric Cards -->
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Managed Batches</span>
+            <span style="color: var(--accent-emerald);">3 Active</span>
+          </div>
+          <div class="metric-value">3</div>
+          <div class="metric-meta">FS-2026-A, FS-2026-B, AI-2026</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Enrolled Engineers</span>
+            <span style="color: var(--accent-cyan);">+6 this month</span>
+          </div>
+          <div class="metric-value">46</div>
+          <div class="metric-meta">100% Onboarding Compliance</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Course Completion</span>
+            <span style="color: var(--accent-emerald);">Target: 70%</span>
+          </div>
+          <div class="metric-value">78.4%</div>
+          <div class="metric-meta">+8.4% ahead of schedule</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Pending Interventions</span>
+            <span style="color: var(--accent-amber);">Requires Action</span>
+          </div>
+          <div class="metric-value">4</div>
+          <div class="metric-meta">Focus on module resolution</div>
+        </div>
+      </div>
+
+      <!-- Cohort Batches Table -->
+      <div class="nexus-panel">
+        <div class="nexus-panel-header">
+          <h3 class="nexus-panel-title">📦 Active Engineering Cohorts</h3>
+          <span style="font-size: 0.75rem; color: var(--accent-cyan);">Synced with Gitea Evidence</span>
+        </div>
+        <div class="nexus-panel-body" style="padding: 0;">
+          <table class="nexus-table">
+            <thead>
+              <tr>
+                <th>Batch Code</th>
+                <th>Cohort Name</th>
+                <th>Timeline</th>
+                <th>Engineers</th>
+                <th>Focus Areas</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--accent-cyan);">FS-2026-A</strong></td>
+                <td><strong style="color: #ffffff;">Full Stack Foundations A</strong></td>
+                <td>Jan – Jun 2026</td>
+                <td>18 engineers</td>
+                <td>
+                  <span style="font-size: 0.72rem; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">React state</span>
+                  <span style="font-size: 0.72rem; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">API debugging</span>
+                </td>
+                <td><span class="status-pill active">Active</span></td>
+                <td>
+                  <a href="/admin/batches/b-101/employees" class="nexus-btn nexus-btn-muted" style="font-size: 0.72rem; padding: 4px 10px;">Roster</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong style="color: var(--accent-cyan);">FS-2026-B</strong></td>
+                <td><strong style="color: #ffffff;">Full Stack Foundations B</strong></td>
+                <td>Feb – Jul 2026</td>
+                <td>16 engineers</td>
+                <td>
+                  <span style="font-size: 0.72rem; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">TypeScript generics</span>
+                  <span style="font-size: 0.72rem; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">Async patterns</span>
+                </td>
+                <td><span class="status-pill active">Active</span></td>
+                <td>
+                  <a href="/admin/batches/b-101/employees" class="nexus-btn nexus-btn-muted" style="font-size: 0.72rem; padding: 4px 10px;">Roster</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong style="color: var(--accent-cyan);">AI-2026</strong></td>
+                <td><strong style="color: #ffffff;">Applied AI Engineering</strong></td>
+                <td>Mar – Aug 2026</td>
+                <td>12 engineers</td>
+                <td>
+                  <span style="font-size: 0.72rem; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">Prompt evaluation</span>
+                  <span style="font-size: 0.72rem; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">Data pipelines</span>
+                </td>
+                <td><span class="status-pill active">Active</span></td>
+                <td>
+                  <a href="/admin/batches/b-101/employees" class="nexus-btn nexus-btn-muted" style="font-size: 0.72rem; padding: 4px 10px;">Roster</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cohort Skills Gap & Automated Recommendations -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div class="nexus-panel">
+          <div class="nexus-panel-header">
+            <h3 class="nexus-panel-title">🔍 Identified Cohort Skill Gaps</h3>
+            <span style="font-size: 0.725rem; color: var(--accent-amber);">SkillQuest Signals</span>
+          </div>
+          <div class="nexus-panel-body">
+            <div style="margin-bottom: 14px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px;">
+                <span>Module Resolution & File Casing (FS-2026-A)</span>
+                <span style="color: var(--accent-amber);">32% Failure Rate</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 68%; background: var(--accent-amber);"></div>
+              </div>
+              <span style="font-size: 0.72rem; color: var(--text-muted);">Common symptom: Case sensitivity differences between Windows and Linux CI</span>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px;">
+                <span>Database Stale Lock Cleanups (FS-2026-B)</span>
+                <span style="color: var(--accent-rose);">45% Escalated to Lead</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 55%; background: var(--accent-rose);"></div>
+              </div>
+              <span style="font-size: 0.72rem; color: var(--text-muted);">Common symptom: Port 5432 refusal due to container unclean restart</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="nexus-panel">
+          <div class="nexus-panel-header">
+            <h3 class="nexus-panel-title">📋 Recent Administrative Audit Events</h3>
+            <a href="/admin/audit-log" class="nexus-btn nexus-btn-muted" style="font-size: 0.72rem; padding: 3px 8px;">View Full Log</a>
+          </div>
+          <div class="nexus-panel-body">
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.8rem;">
+              <div style="border-left: 2px solid var(--accent-emerald); padding-left: 10px;">
+                <div style="color: #ffffff; font-weight: 600;">Employee Ava Chen marked verified in React State course</div>
+                <div style="color: var(--text-muted); font-size: 0.72rem;">Today at 14:22 UTC • Automatic ProblemDNA verification gate</div>
+              </div>
+
+              <div style="border-left: 2px solid var(--accent-cyan); padding-left: 10px;">
+                <div style="color: #ffffff; font-weight: 600;">Batch FS-2026-A course deadline adjusted to Jun 30, 2026</div>
+                <div style="color: var(--text-muted); font-size: 0.72rem;">Yesterday at 09:15 UTC • Admin A-1</div>
+              </div>
+
+              <div style="border-left: 2px solid var(--accent-purple); padding-left: 10px;">
+                <div style="color: #ffffff; font-weight: 600;">Roster imported for Applied AI Engineering (12 engineers)</div>
+                <div style="color: var(--text-muted); font-size: 0.72rem;">3 days ago • Bulk CSV Importer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

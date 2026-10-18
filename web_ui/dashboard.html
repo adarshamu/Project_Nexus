@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Dashboard | NEXUS</title>
+  <meta name="description" content="NEXUS Developer Workspace Dashboard">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="workspace.css">
+</head>
+<body>
+  <!-- Global Top Header -->
+  <header class="app-header">
+    <a href="/" class="brand-wrapper">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="brand-title">NEXUS</h1>
+        <div class="brand-sub">Developer Workspace</div>
+      </div>
+    </a>
+
+    <!-- Workspace Switcher Pills -->
+    <div class="workspace-switcher">
+      <a href="/dashboard" class="ws-btn active">💻 Developer</a>
+      <a href="/admin" class="ws-btn">🛡️ Admin</a>
+      <a href="/super-admin" class="ws-btn">👑 Super Admin</a>
+      <a href="/" class="ws-btn">⚡ WorkLens Engine</a>
+    </div>
+
+    <!-- Active User Profile Badge -->
+    <div class="user-badge">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ava Chen" class="user-avatar">
+      <div class="user-info">
+        <span class="user-name">Ava Chen</span>
+        <span class="user-role-label">Full Stack Foundations A</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Workspace Main Layout -->
+  <div class="workspace-container">
+    <!-- Left Navigation Sidebar -->
+    <aside class="app-sidebar">
+      <nav class="sidebar-nav">
+        <span class="sidebar-heading">Navigation</span>
+        <a href="/dashboard" class="sidebar-link active">📊 Dashboard</a>
+        <a href="/skillquest" class="sidebar-link">📈 SkillQuest</a>
+        <a href="/skillquest/courses" class="sidebar-link">📚 Courses (6)</a>
+        <a href="/skillquest/leaderboard" class="sidebar-link">🏆 Leaderboard</a>
+        <a href="/human-api" class="sidebar-link">👥 Human API & Experts</a>
+
+        <span class="sidebar-heading" style="margin-top: 14px;">Preferences</span>
+        <a href="/settings" class="sidebar-link">⚙️ Settings</a>
+        <a href="/login" class="sidebar-link">🚪 Switch Role</a>
+      </nav>
+
+      <div style="font-size: 0.72rem; color: var(--text-muted); padding: 12px; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm);">
+        Cohort: <strong>FS-2026-A</strong><br>
+        Status: <span style="color: var(--accent-emerald);">Active</span>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Content -->
+    <main class="workspace-main">
+      <!-- Welcome Banner -->
+      <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 4px;">Welcome back, Ava! 👋</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Here is your personal growth snapshot, cohort pace, and active courses for <strong>Full Stack Foundations A</strong>.</p>
+        </div>
+        <a href="/" class="nexus-btn nexus-btn-primary">
+          <span>🔍 Trigger WorkLens Help</span>
+        </a>
+      </div>
+
+      <!-- Top Metric Cards -->
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Overall Skill Score</span>
+            <span style="color: var(--accent-emerald);">+4.2%</span>
+          </div>
+          <div class="metric-value">84%</div>
+          <div class="metric-meta">Strongest: React (92%)</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Active Courses</span>
+            <span>2 In Progress</span>
+          </div>
+          <div class="metric-value">3 / 6</div>
+          <div class="metric-meta">50% Curriculum Completed</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Verified Incidents</span>
+            <span style="color: var(--accent-cyan);">ProblemDNA</span>
+          </div>
+          <div class="metric-value">14</div>
+          <div class="metric-meta">Zero recurring defects</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-title">
+            <span>Cohort Standing</span>
+            <span>FS-2026-A</span>
+          </div>
+          <div class="metric-value">#2</div>
+          <div class="metric-meta">Top 10% of 18 peers</div>
+        </div>
+      </div>
+
+      <!-- Two Column Layout: Courses in Progress & Recommended Interventions -->
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-bottom: 24px;">
+        <!-- Left: Active Courses -->
+        <div class="nexus-panel">
+          <div class="nexus-panel-header">
+            <h3 class="nexus-panel-title">📚 Active Courses & Curricula</h3>
+            <a href="/skillquest/courses" class="nexus-btn nexus-btn-muted" style="font-size: 0.75rem; padding: 4px 10px;">View All (6)</a>
+          </div>
+          <div class="nexus-panel-body">
+            <!-- Course 1 -->
+            <div style="background: rgba(14, 19, 31, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">React State Patterns in Practice</h4>
+                <span class="status-pill active">In Progress • 75%</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">
+                Learn predictable state modeling, reducer patterns, and debugging shared context trees.
+              </p>
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 75%; background: var(--accent-emerald);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.725rem; color: var(--text-muted); margin-top: 6px;">
+                <span>Module 3 of 4: Custom Reducer Lifecycles</span>
+                <span style="color: var(--accent-cyan); cursor: pointer;">Resume Workshop →</span>
+              </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div style="background: rgba(14, 19, 31, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">API Debugging and Resilience</h4>
+                <span class="status-pill warning">In Progress • 40%</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">
+                Trace failing requests, design exponential retries, and observe distributed connection timeouts.
+              </p>
+              <div class="progress-track">
+                <div class="progress-bar" style="width: 40%; background: var(--accent-amber);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.725rem; color: var(--text-muted); margin-top: 6px;">
+                <span>Module 2 of 5: Idempotency & Circuit Breakers</span>
+                <span style="color: var(--accent-cyan); cursor: pointer;">Resume Workshop →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: SkillQuest Targeted Growth Opportunities -->
+        <div class="nexus-panel">
+          <div class="nexus-panel-header">
+            <h3 class="nexus-panel-title">🎯 Targeted Skill Interventions</h3>
+            <span style="font-size: 0.75rem; color: var(--accent-cyan);">Evidence-Driven</span>
+          </div>
+          <div class="nexus-panel-body">
+            <div style="background: rgba(14, 19, 31, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <strong style="font-size: 0.88rem; color: var(--accent-amber);">Focus: Module Resolution & Bundlers</strong>
+                <span style="font-size: 0.75rem; color: var(--accent-rose);">High Impact</span>
+              </div>
+              <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 8px;">
+                2 recent queries recorded on JSX component import casing (e.g. ProductCard vs ProductCards).
+              </p>
+              <a href="/skillquest" style="font-size: 0.75rem; color: var(--accent-cyan); text-decoration: none; font-weight: 600;">Open Interactive Sandbox (15 mins) →</a>
+            </div>
+
+            <div style="background: rgba(14, 19, 31, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <strong style="font-size: 0.88rem; color: var(--accent-emerald);">Strong: Component Lifecycle</strong>
+                <span style="font-size: 0.75rem; color: var(--accent-emerald);">Mastery</span>
+              </div>
+              <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 8px;">
+                Autonomous resolutions with zero recurring defects recorded over last 14 sprints.
+              </p>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Eligible for Peer Mentorship on Human API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Human API Active Available Experts Panel -->
+      <div class="nexus-panel">
+        <div class="nexus-panel-header">
+          <h3 class="nexus-panel-title">👥 Human API: Team Mentors Available Now</h3>
+          <a href="/human-api" class="nexus-btn nexus-btn-muted" style="font-size: 0.75rem; padding: 4px 10px;">Expert Directory</a>
+        </div>
+        <div class="nexus-panel-body">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <!-- Expert 1 -->
+            <div style="background: rgba(14, 19, 31, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; display: flex; gap: 12px; align-items: center;">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-emerald);">
+              <div style="flex: 1;">
+                <div style="font-weight: 700; font-size: 0.9rem; color: #ffffff;">Amara Osei</div>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">Senior Frontend Engineer</div>
+                <div style="font-size: 0.7rem; color: var(--accent-emerald); margin-top: 2px;">🟢 Available for Pairing</div>
+              </div>
+              <a href="/human-api/chat" class="nexus-btn nexus-btn-primary" style="font-size: 0.75rem; padding: 6px 12px;">Huddle</a>
+            </div>
+
+            <!-- Expert 2 -->
+            <div style="background: rgba(14, 19, 31, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; display: flex; gap: 12px; align-items: center;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-amber);">
+              <div style="flex: 1;">
+                <div style="font-weight: 700; font-size: 0.9rem; color: #ffffff;">Marcus Vance</div>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">Distributed Systems Lead</div>
+                <div style="font-size: 0.7rem; color: var(--accent-amber); margin-top: 2px;">🤖 Visual Expert Fallback</div>
+              </div>
+              <a href="/human-api/ai/p-1" class="nexus-btn nexus-btn-muted" style="font-size: 0.75rem; padding: 6px 12px;">Consult AI</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
